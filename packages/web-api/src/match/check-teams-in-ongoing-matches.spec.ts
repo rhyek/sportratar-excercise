@@ -1,13 +1,13 @@
 import { ulid } from 'ulid';
+import { CreateMatchService } from './create-match.service';
 import type { Match } from './match.model';
-import { MatchService } from './match.service';
 
 describe('checkTeamsInOngoingMatches', () => {
   test('no ongoing matches', () => {
     const ongoingMatches: Match[] = [];
     const teamIds = ['team1', 'team2'];
     expect(() =>
-      MatchService.checkTeamsInOngoingMatches(teamIds, ongoingMatches),
+      CreateMatchService.checkTeamsInOngoingMatches(teamIds, ongoingMatches),
     ).not.toThrow();
   });
   test('some ongoing matches, but no team in ongoing matches', () => {
@@ -33,7 +33,7 @@ describe('checkTeamsInOngoingMatches', () => {
     ];
     const teamIds = ['team1', 'team2'];
     expect(() =>
-      MatchService.checkTeamsInOngoingMatches(teamIds, ongoingMatches),
+      CreateMatchService.checkTeamsInOngoingMatches(teamIds, ongoingMatches),
     ).not.toThrow();
   });
   test('some ongoing matches, home team in ongoing matches', () => {
@@ -60,7 +60,7 @@ describe('checkTeamsInOngoingMatches', () => {
     ];
     const teamIds = ['team1', 'team2'];
     expect(() =>
-      MatchService.checkTeamsInOngoingMatches(teamIds, ongoingMatches),
+      CreateMatchService.checkTeamsInOngoingMatches(teamIds, ongoingMatches),
     ).toThrow(`Team [team1] is already in match [${matchId}]`);
   });
   test('some ongoing matches, away team in ongoing matches', () => {
@@ -87,7 +87,7 @@ describe('checkTeamsInOngoingMatches', () => {
     ];
     const teamIds = ['team1', 'team2'];
     expect(() =>
-      MatchService.checkTeamsInOngoingMatches(teamIds, ongoingMatches),
+      CreateMatchService.checkTeamsInOngoingMatches(teamIds, ongoingMatches),
     ).toThrow(`Team [team2] is already in match [${matchId}]`);
   });
 });
