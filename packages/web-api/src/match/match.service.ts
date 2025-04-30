@@ -13,6 +13,10 @@ export class MatchService {
   create(teamHomeName: string, teamAwayName: string) {
     const teamHome = this.teamRepository.findOrCreate(teamHomeName);
     const teamAway = this.teamRepository.findOrCreate(teamAwayName);
+    MatchService.checkTeamsInOngoingMatches(
+      [teamHome.id, teamAway.id],
+      this.matchRepository.getOngoingMatches(),
+    );
     return this.matchRepository.create({
       teamHome: {
         id: teamHome.id,
