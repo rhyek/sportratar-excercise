@@ -15,3 +15,4 @@
 - Source code is located at [packages/web-api/src](packages/web-api/src/)
 - Tests at [packages/web-api/test](packages/web-api/test/)
 - The project is meant to only run tests. No CLI, REST API, etc are available per the excercise instructions
+- Tests are a mix of integration and unit, but most are integration tests
