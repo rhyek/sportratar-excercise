@@ -21,6 +21,16 @@ async function setup() {
 }
 
 describe('create match', () => {
+  test('create with invalid team throws', async () => {
+    const { app, createMatchService } = await setup();
+    try {
+      expect(() => createMatchService.create('invalid', 'invalid')).toThrow(
+        'Team not found',
+      );
+    } finally {
+      await app.close();
+    }
+  });
   test('create', async () => {
     const { app, createMatchService, teamService } = await setup();
     try {
@@ -39,18 +49,6 @@ describe('create match', () => {
         startedAt: expect.any(Date),
         finishedAt: null,
       });
-    } finally {
-      await app.close();
-    }
-  });
-  test('create with invalid team', async () => {
-    const { app, createMatchService } = await setup();
-    try {
-      createMatchService.create('invalid', 'invalid');
-    } catch (error) {
-      expect(error).toBeInstanceOf(Error);
-      assert(error instanceof Error);
-      expect(error.message).toBe('Team not found');
     } finally {
       await app.close();
     }
