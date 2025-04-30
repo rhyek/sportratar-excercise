@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    // Enable latest features
+    "lib": ["esnext"],
+    "target": "esnext",
+    "module": "esnext",
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "allowJs": true,
+
+    // Bundler mode
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+
+    "strict": true,
+    "removeComments": true,
+    "exactOptionalPropertyTypes": true,
+    "declaration": false
+  }
+}

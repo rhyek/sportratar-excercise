@@ -1,0 +1,7 @@
+packages:
+  - 'packages/*'
+  - 'scripts'
+neverBuiltDependencies: []
+includeWorkspacePackages: true
+preferWorkspacePackages: true
+updateNotifier: false
