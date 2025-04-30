@@ -36,4 +36,17 @@ export class MatchRepository {
   findById(id: string): Match | null {
     return this.matches.find((match) => match.id === id) ?? null;
   }
+
+  update(
+    id: string,
+    match: Partial<
+      Pick<Match, 'teamHomeScore' | 'teamAwayScore' | 'finishedAt'>
+    >,
+  ) {
+    const matchIndex = this.matches.findIndex((match) => match.id === id);
+    if (matchIndex === -1) {
+      throw new Error('Match not found');
+    }
+    this.matches[matchIndex] = { ...this.matches[matchIndex], ...match };
+  }
 }

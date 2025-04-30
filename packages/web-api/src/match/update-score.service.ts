@@ -5,11 +5,13 @@ import { MatchRepository } from './match.repository';
 export class UpdateScoreService {
   constructor(private readonly matchRepository: MatchRepository) {}
 
-  // eslint-disable-next-line unused-imports/no-unused-vars
   update(matchId: string, teamHomeScore: number, teamAwayScore: number) {
-    const match = this.matchRepository.findById(matchId);
-    if (!match) {
-      throw new Error('Match not found');
+    if (teamHomeScore < 0 || teamAwayScore < 0) {
+      throw new Error('Score cannot be negative');
     }
+    this.matchRepository.update(matchId, {
+      teamHomeScore,
+      teamAwayScore,
+    });
   }
 }
