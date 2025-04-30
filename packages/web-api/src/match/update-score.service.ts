@@ -5,13 +5,13 @@ import { MatchRepository } from './match.repository';
 export class UpdateScoreService {
   constructor(private readonly matchRepository: MatchRepository) {}
 
-  update(matchId: string, teamHomeScore: number, teamAwayScore: number) {
-    if (teamHomeScore < 0 || teamAwayScore < 0) {
+  update(matchId: string, homeTeamScore: number, awayTeamScore: number) {
+    if (homeTeamScore < 0 || awayTeamScore < 0) {
       throw new Error('Score cannot be negative');
     }
     this.matchRepository.update(matchId, {
-      teamHomeScore,
-      teamAwayScore,
+      homeTeamScore,
+      awayTeamScore,
     });
   }
 }

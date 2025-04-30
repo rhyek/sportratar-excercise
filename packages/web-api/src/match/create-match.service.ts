@@ -38,7 +38,7 @@ export class CreateMatchService {
     ongoingMatches: Match[],
   ) {
     for (const match of ongoingMatches) {
-      const matchTeamIds = [match.teamHomeId, match.teamAwayId];
+      const matchTeamIds = [match.homeTeamId, match.awayTeamId];
       for (const teamId of teamIds) {
         if (matchTeamIds.includes(teamId)) {
           throw new Error(`Team [${teamId}] is already in match [${match.id}]`);

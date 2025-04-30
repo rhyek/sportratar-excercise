@@ -61,15 +61,15 @@ describe('update score', () => {
       let match = matchRepository.findById(id);
       assert(match);
       expect(match).toMatchObject({
-        teamHomeScore: 0,
-        teamAwayScore: 0,
+        homeTeamScore: 0,
+        awayTeamScore: 0,
       });
       updateScoreService.update(id, 1, 2);
       match = matchRepository.findById(id);
       assert(match);
       expect(match).toMatchObject({
-        teamHomeScore: 1,
-        teamAwayScore: 2,
+        homeTeamScore: 1,
+        awayTeamScore: 2,
       });
     } finally {
       await app.close();

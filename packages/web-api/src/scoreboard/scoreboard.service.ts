@@ -17,14 +17,14 @@ export class ScoreboardService {
     const result = sortedMatches.map((match) => ({
       id: match.id,
       homeTeam: {
-        id: match.teamHomeId,
-        name: this.teamRepository.findById(match.teamHomeId)!.name,
-        score: match.teamHomeScore,
+        id: match.homeTeamId,
+        name: this.teamRepository.findById(match.homeTeamId)!.name,
+        score: match.homeTeamScore,
       },
       awayTeam: {
-        id: match.teamAwayId,
-        name: this.teamRepository.findById(match.teamAwayId)!.name,
-        score: match.teamAwayScore,
+        id: match.awayTeamId,
+        name: this.teamRepository.findById(match.awayTeamId)!.name,
+        score: match.awayTeamScore,
       },
       startedAt: match.startedAt,
     }));
@@ -34,7 +34,7 @@ export class ScoreboardService {
   static sortMatches(matches: Match[]) {
     return matches.sort((a, b) => {
       const scoreDiff =
-        b.teamHomeScore + b.teamAwayScore - (a.teamHomeScore + a.teamAwayScore);
+        b.homeTeamScore + b.awayTeamScore - (a.homeTeamScore + a.awayTeamScore);
       if (scoreDiff !== 0) {
         return scoreDiff;
       }

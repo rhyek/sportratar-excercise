@@ -42,10 +42,10 @@ describe('create match', () => {
       expect(match).not.toBeNull();
       expect(match).toMatchObject({
         id: expect.any(String),
-        teamHomeId: expect.any(String),
-        teamAwayId: expect.any(String),
-        teamHomeScore: 0,
-        teamAwayScore: 0,
+        homeTeamId: expect.any(String),
+        awayTeamId: expect.any(String),
+        homeTeamScore: 0,
+        awayTeamScore: 0,
         startedAt: expect.any(Date),
         finishedAt: null,
       });

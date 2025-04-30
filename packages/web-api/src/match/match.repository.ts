@@ -18,10 +18,10 @@ export class MatchRepository {
   }): Match {
     const match: Match = {
       id: ulid(),
-      teamHomeId: params.teamHome.id,
-      teamAwayId: params.teamAway.id,
-      teamHomeScore: params.teamHome.score,
-      teamAwayScore: params.teamAway.score,
+      homeTeamId: params.teamHome.id,
+      awayTeamId: params.teamAway.id,
+      homeTeamScore: params.teamHome.score,
+      awayTeamScore: params.teamAway.score,
       startedAt: new Date(),
       finishedAt: null,
     };
@@ -40,7 +40,7 @@ export class MatchRepository {
   update(
     id: string,
     match: Partial<
-      Pick<Match, 'teamHomeScore' | 'teamAwayScore' | 'finishedAt'>
+      Pick<Match, 'homeTeamScore' | 'awayTeamScore' | 'finishedAt'>
     >,
   ) {
     const matchIndex = this.matches.findIndex((match) => match.id === id);
