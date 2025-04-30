@@ -33,3 +33,7 @@ The library exposes e `LibrayError` that consumers can match for in `try/catch` 
 - Tests at [packages/library/test](packages/library/test/)
 - The project is meant to only run tests. No CLI, REST API, etc are available per the excercise instructions
 - Tests are a mix of integration and unit, but most are integration tests
+
+# Test runner output
+
+![Test Runner Output](./assets/test-output.png)
