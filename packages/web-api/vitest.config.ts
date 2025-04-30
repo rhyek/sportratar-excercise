@@ -2,11 +2,12 @@ import path from 'node:path';
 import swc from 'unplugin-swc';
 import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
+import { workspaceRoot } from '../../scripts/lib/dirs';
 
 export default defineConfig({
   test: {
     globals: true,
-    root: process.env.WORKSPACE_ROOT!,
+    root: workspaceRoot,
     include: [path.resolve(import.meta.dirname, '**/*.spec.ts')],
     dangerouslyIgnoreUnhandledErrors: true,
     reporters: ['verbose'],
