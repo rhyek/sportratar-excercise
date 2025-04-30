@@ -41,37 +41,44 @@ describe('sort matches', () => {
       },
     ];
 
-    const sortedMatches = ScoreboardService.sortMatches(matches as Match[]);
+    const sortedMatches = ScoreboardService.sortByTotalScore(
+      matches as Match[],
+    );
     const expectedMatches = [
       {
         homeTeamId: 'uruguay',
         awayTeamId: 'italy',
         homeTeamScore: 6,
         awayTeamScore: 6,
+        totalScore: 12,
       },
       {
         homeTeamId: 'spain',
         awayTeamId: 'brazil',
         homeTeamScore: 10,
         awayTeamScore: 2,
+        totalScore: 12,
       },
       {
         homeTeamId: 'mexico',
         awayTeamId: 'canada',
         homeTeamScore: 0,
         awayTeamScore: 5,
+        totalScore: 5,
       },
       {
         homeTeamId: 'argentina',
         awayTeamId: 'australia',
         homeTeamScore: 3,
         awayTeamScore: 1,
+        totalScore: 4,
       },
       {
         homeTeamId: 'germany',
         awayTeamId: 'france',
         homeTeamScore: 2,
         awayTeamScore: 2,
+        totalScore: 4,
       },
     ];
 

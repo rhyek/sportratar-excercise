@@ -11,6 +11,7 @@ export type Scoreboard = {
       name: string;
       score: number;
     };
+    totalScore: number;
     startedAt: Date;
   }[];
 };

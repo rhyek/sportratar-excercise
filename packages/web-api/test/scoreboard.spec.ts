@@ -85,6 +85,7 @@ describe('scoreboard', () => {
               score: 5,
             },
             startedAt: expect.any(Date),
+            totalScore: 7,
           },
           {
             id: expect.any(String),
@@ -99,6 +100,7 @@ describe('scoreboard', () => {
               score: 4,
             },
             startedAt: expect.any(Date),
+            totalScore: 7,
           },
           {
             id: expect.any(String),
@@ -113,6 +115,7 @@ describe('scoreboard', () => {
               score: 2,
             },
             startedAt: expect.any(Date),
+            totalScore: 5,
           },
         ],
       };
