@@ -11,11 +11,11 @@ export class EndMatchService {
     if (!match) {
       throw new LibraryError('Match not found');
     }
-    if (match.finishedAt) {
+    if (match.endedAt) {
       throw new LibraryError('Match already finished');
     }
     this.matchRepository.update(matchId, {
-      finishedAt: new Date(),
+      endedAt: new Date(),
     });
   }
 }

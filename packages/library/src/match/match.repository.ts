@@ -24,14 +24,14 @@ export class MatchRepository {
       homeTeamScore: params.teamHome.score,
       awayTeamScore: params.teamAway.score,
       startedAt: new Date(),
-      finishedAt: null,
+      endedAt: null,
     };
     this.matches.push(match);
     return match;
   }
 
   getOngoingMatches(): Match[] {
-    return this.matches.filter((match) => match.finishedAt === null);
+    return this.matches.filter((match) => match.endedAt === null);
   }
 
   findById(id: string): Match | null {
@@ -40,9 +40,7 @@ export class MatchRepository {
 
   update(
     id: string,
-    match: Partial<
-      Pick<Match, 'homeTeamScore' | 'awayTeamScore' | 'finishedAt'>
-    >,
+    match: Partial<Pick<Match, 'homeTeamScore' | 'awayTeamScore' | 'endedAt'>>,
   ) {
     const matchIndex = this.matches.findIndex((match) => match.id === id);
     if (matchIndex === -1) {

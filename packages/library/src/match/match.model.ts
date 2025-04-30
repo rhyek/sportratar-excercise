@@ -5,5 +5,5 @@ export type Match = {
   homeTeamScore: number;
   awayTeamScore: number;
   startedAt: Date;
-  finishedAt: Date | null;
+  endedAt: Date | null;
 };

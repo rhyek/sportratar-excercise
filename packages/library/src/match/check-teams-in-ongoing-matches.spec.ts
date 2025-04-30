@@ -19,7 +19,7 @@ describe('checkTeamsInOngoingMatches', () => {
         homeTeamScore: 3,
         awayTeamScore: 1,
         startedAt: new Date(),
-        finishedAt: null,
+        endedAt: null,
       },
       {
         id: ulid(),
@@ -28,7 +28,7 @@ describe('checkTeamsInOngoingMatches', () => {
         homeTeamScore: 4,
         awayTeamScore: 2,
         startedAt: new Date(),
-        finishedAt: null,
+        endedAt: null,
       },
     ];
     const teamIds = ['team1', 'team2'];
@@ -46,7 +46,7 @@ describe('checkTeamsInOngoingMatches', () => {
         homeTeamScore: 3,
         awayTeamScore: 1,
         startedAt: new Date(),
-        finishedAt: null,
+        endedAt: null,
       },
       {
         id: matchId,
@@ -55,7 +55,7 @@ describe('checkTeamsInOngoingMatches', () => {
         homeTeamScore: 4,
         awayTeamScore: 2,
         startedAt: new Date(),
-        finishedAt: null,
+        endedAt: null,
       },
     ];
     const teamIds = ['team1', 'team2'];
@@ -73,7 +73,7 @@ describe('checkTeamsInOngoingMatches', () => {
         homeTeamScore: 3,
         awayTeamScore: 1,
         startedAt: new Date(),
-        finishedAt: null,
+        endedAt: null,
       },
       {
         id: matchId,
@@ -82,7 +82,7 @@ describe('checkTeamsInOngoingMatches', () => {
         homeTeamScore: 4,
         awayTeamScore: 2,
         startedAt: new Date(),
-        finishedAt: null,
+        endedAt: null,
       },
     ];
     const teamIds = ['team1', 'team2'];

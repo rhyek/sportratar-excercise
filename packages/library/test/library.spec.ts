@@ -37,8 +37,8 @@ describe('library', () => {
             name: team2.name,
             score: 2,
           },
-          startedAt: expect.any(Date),
           totalScore: 3,
+          startedAt: expect.any(Date),
         },
       ],
     });

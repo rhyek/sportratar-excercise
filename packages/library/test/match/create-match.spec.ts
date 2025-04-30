@@ -46,7 +46,7 @@ describe('create match', () => {
         homeTeamScore: 0,
         awayTeamScore: 0,
         startedAt: expect.any(Date),
-        finishedAt: null,
+        endedAt: null,
       });
     } finally {
       await app.close();

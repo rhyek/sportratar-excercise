@@ -3,7 +3,7 @@ import { ScoreboardService } from './scoreboard.service';
 
 describe('sort matches', () => {
   test('test from pdf', () => {
-    const matches: Omit<Match, 'id' | 'finishedAt'>[] = [
+    const matches: Omit<Match, 'id' | 'endedAt'>[] = [
       {
         homeTeamId: 'mexico',
         awayTeamId: 'canada',
