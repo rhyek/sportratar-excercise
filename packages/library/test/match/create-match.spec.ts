@@ -64,4 +64,18 @@ describe('create match', () => {
       await app.close();
     }
   });
+  test('cannot create with team in ongoing match', async () => {
+    const { app, createMatchService, teamService } = await setup();
+    try {
+      const team1 = teamService.findOrCreate('team1');
+      const team2 = teamService.findOrCreate('team2');
+      const team3 = teamService.findOrCreate('team3');
+      const match1 = createMatchService.create(team1.id, team2.id);
+      expect(() => createMatchService.create(team3.id, team2.id)).toThrow(
+        `Team [${team2.id}] is already in match [${match1.id}]`,
+      );
+    } finally {
+      await app.close();
+    }
+  });
 });
