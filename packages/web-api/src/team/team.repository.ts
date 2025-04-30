@@ -5,10 +5,9 @@ import type { Team } from './team.model';
 @Injectable()
 export class TeamRepository {
   private readonly teams: Team[] = [];
-  private readonly teamNameIndex: Map<string, Team> = new Map();
 
   create(name: string): Team {
-    if (this.teamNameIndex.has(name)) {
+    if (this.teams.find((team) => team.name === name)) {
       throw new Error('Team already exists');
     }
     const newTeam = {
@@ -16,19 +15,14 @@ export class TeamRepository {
       name,
     };
     this.teams.push(newTeam);
-    this.teamNameIndex.set(name, newTeam);
     return newTeam;
   }
 
-  findByName(name: string): Team | null {
-    return this.teamNameIndex.get(name) ?? null;
+  findById(id: string): Team | null {
+    return this.teams.find((team) => team.id === id) ?? null;
   }
 
-  findOrCreate(name: string): Team {
-    const team = this.findByName(name);
-    if (team) {
-      return team;
-    }
-    return this.create(name);
+  findByName(name: string): Team | null {
+    return this.teams.find((team) => team.name === name) ?? null;
   }
 }

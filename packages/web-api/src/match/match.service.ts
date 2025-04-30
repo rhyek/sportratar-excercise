@@ -10,20 +10,24 @@ export class MatchService {
     private readonly matchRepository: MatchRepository,
   ) {}
 
-  create(teamHomeName: string, teamAwayName: string) {
-    const teamHome = this.teamRepository.findOrCreate(teamHomeName);
-    const teamAway = this.teamRepository.findOrCreate(teamAwayName);
+  create(teamHomeId: string, teamAwayId: string) {
+    if (
+      !this.teamRepository.findById(teamHomeId) ||
+      !this.teamRepository.findById(teamAwayId)
+    ) {
+      throw new Error('Team not found');
+    }
     MatchService.checkTeamsInOngoingMatches(
-      [teamHome.id, teamAway.id],
+      [teamHomeId, teamAwayId],
       this.matchRepository.getOngoingMatches(),
     );
     return this.matchRepository.create({
       teamHome: {
-        id: teamHome.id,
+        id: teamHomeId,
         score: 0,
       },
       teamAway: {
-        id: teamAway.id,
+        id: teamAwayId,
         score: 0,
       },
     });

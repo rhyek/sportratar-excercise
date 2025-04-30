@@ -1,6 +1,7 @@
 import { Test } from '@nestjs/testing';
 import { TeamModule } from '../src/team/team.module';
 import { TeamRepository } from '../src/team/team.repository';
+import { TeamService } from '../src/team/team.service';
 
 async function setup() {
   const testingModule = await Test.createTestingModule({
@@ -9,9 +10,11 @@ async function setup() {
   const app = testingModule.createNestApplication();
   await app.init();
   const teamRepository = app.get(TeamRepository);
+  const teamService = app.get(TeamService);
   return {
     app,
     teamRepository,
+    teamService,
   };
 }
 
@@ -52,16 +55,16 @@ describe('team', () => {
     }
   });
   test('findOrCreate', async () => {
-    const { app, teamRepository } = await setup();
+    const { app, teamService } = await setup();
     try {
       const teamName = 'test1';
-      let team = teamRepository.findOrCreate(teamName);
+      let team = teamService.findOrCreate(teamName);
       expect(team).not.toBeNull();
       expect(team).toMatchObject({
         id: expect.any(String),
         name: teamName,
       });
-      team = teamRepository.findOrCreate(teamName);
+      team = teamService.findOrCreate(teamName);
       expect(team).not.toBeNull();
       expect(team).toMatchObject({
         id: expect.any(String),
