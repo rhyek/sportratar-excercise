@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { LibraryError } from '../../src/library-error';
 import { CreateMatchService } from '../../src/match/create-match.service';
 import { MatchModule } from '../../src/match/match.module';
 import { MatchRepository } from '../../src/match/match.repository';
@@ -29,9 +30,10 @@ describe('update score', () => {
   test('invalid match id throws error', async () => {
     const { app, updateScoreService } = await setup();
     try {
-      expect(() => updateScoreService.update('invalid', 1, 2)).toThrow(
-        'Match not found',
-      );
+      updateScoreService.update('invalid', 1, 2);
+    } catch (error) {
+      assert(error instanceof LibraryError);
+      expect(error.message).toBe('Match not found');
     } finally {
       await app.close();
     }
@@ -39,9 +41,10 @@ describe('update score', () => {
   test('negative score throws error', async () => {
     const { app, updateScoreService } = await setup();
     try {
-      expect(() => updateScoreService.update('invalid', -1, -1)).toThrow(
-        'Score cannot be negative',
-      );
+      updateScoreService.update('invalid', -1, -1);
+    } catch (error) {
+      assert(error instanceof LibraryError);
+      expect(error.message).toBe('Score cannot be negative');
     } finally {
       await app.close();
     }

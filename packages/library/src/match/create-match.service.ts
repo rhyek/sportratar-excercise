@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { LibraryError } from '../library-error';
 import { TeamRepository } from '../team/team.repository';
 import type { Match } from './match.model';
 import { MatchRepository } from './match.repository';
@@ -12,12 +13,12 @@ export class CreateMatchService {
 
   create(homeTeamId: string, awayTeamId: string) {
     if (homeTeamId === awayTeamId) {
-      throw new Error('Home and away team cannot be the same');
+      throw new LibraryError('Home and away team cannot be the same');
     }
     const teamIds = [homeTeamId, awayTeamId];
     for (const teamId of teamIds) {
       if (!this.teamRepository.findById(teamId)) {
-        throw new Error(`Team [${teamId}] not found`);
+        throw new LibraryError(`Team [${teamId}] not found`);
       }
     }
     CreateMatchService.checkTeamsInOngoingMatches(
@@ -44,7 +45,9 @@ export class CreateMatchService {
       const matchTeamIds = [match.homeTeamId, match.awayTeamId];
       for (const teamId of teamIds) {
         if (matchTeamIds.includes(teamId)) {
-          throw new Error(`Team [${teamId}] is already in match [${match.id}]`);
+          throw new LibraryError(
+            `Team [${teamId}] is already in match [${match.id}]`,
+          );
         }
       }
     }

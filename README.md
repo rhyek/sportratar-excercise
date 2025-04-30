@@ -8,6 +8,10 @@ A NestJS application would use the library similar to the [packages/library/test
 
 If interested, my [nestjs-endpoints](https://github.com/rhyek/nestjs-endpoints) library can serve as an example of how I've documented and published Node.js/NestJS libraries for public use in the past.
 
+## Error handling
+
+The library exposes e `LibrayError` that consumers can match for in `try/catch` to handle expected errors.
+
 # Setup
 
 1. Install latest nodejs and pnpm

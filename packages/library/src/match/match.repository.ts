@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ulid } from 'ulid';
+import { LibraryError } from '../library-error';
 import type { Match } from './match.model';
 
 @Injectable()
@@ -45,7 +46,7 @@ export class MatchRepository {
   ) {
     const matchIndex = this.matches.findIndex((match) => match.id === id);
     if (matchIndex === -1) {
-      throw new Error('Match not found');
+      throw new LibraryError('Match not found');
     }
     this.matches[matchIndex] = { ...this.matches[matchIndex], ...match };
   }

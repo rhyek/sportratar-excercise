@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { ulid } from 'ulid';
+import { LibraryError } from '../library-error';
 import type { Team } from './team.model';
 
 @Injectable()
@@ -9,7 +10,7 @@ export class TeamRepository {
 
   create(name: string): Team {
     if (this.teams.find((team) => team.name === name)) {
-      throw new Error('Team already exists');
+      throw new LibraryError('Team already exists');
     }
     const newTeam = {
       id: ulid(),

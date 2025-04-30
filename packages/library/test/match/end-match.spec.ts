@@ -1,4 +1,5 @@
 import { Test } from '@nestjs/testing';
+import { LibraryError } from '../../src/library-error';
 import { CreateMatchService } from '../../src/match/create-match.service';
 import { EndMatchService } from '../../src/match/end-match.service';
 import { MatchModule } from '../../src/match/match.module';
@@ -29,7 +30,10 @@ describe('end match', () => {
   test('end match with invalid team throws', async () => {
     const { app, endMatchService } = await setup();
     try {
-      expect(() => endMatchService.end('invalid')).toThrow('Match not found');
+      endMatchService.end('invalid');
+    } catch (error) {
+      assert(error instanceof LibraryError);
+      expect(error.message).toBe('Match not found');
     } finally {
       await app.close();
     }
@@ -79,7 +83,9 @@ describe('end match', () => {
       const teamAway = teamService.findOrCreate('team2');
       const { id } = createMatchService.create(teamHome.id, teamAway.id);
       endMatchService.end(id);
-      expect(() => endMatchService.end(id)).toThrow('Match already finished');
+    } catch (error) {
+      assert(error instanceof LibraryError);
+      expect(error.message).toBe('Match already finished');
     } finally {
       await app.close();
     }
