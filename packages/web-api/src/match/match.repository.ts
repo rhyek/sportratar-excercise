@@ -32,4 +32,8 @@ export class MatchRepository {
   getOngoingMatches(): Match[] {
     return this.matches.filter((match) => match.finishedAt === null);
   }
+
+  findById(id: string): Match | null {
+    return this.matches.find((match) => match.id === id) ?? null;
+  }
 }
