@@ -1,10 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { MatchModule } from '../src/match/match.module';
 import { ScoreboardModule } from '../src/scoreboard/scoreboard.module';
+import { TeamModule } from '../src/team/team.module';
 
 async function setup() {
   const module: TestingModule = await Test.createTestingModule({
-    imports: [MatchModule, ScoreboardModule],
+    imports: [MatchModule, TeamModule, ScoreboardModule],
   }).compile();
 
   const app = module.createNestApplication();
