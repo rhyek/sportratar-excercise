@@ -6,5 +6,6 @@ import { MatchService } from './match.service';
 @Module({
   imports: [TeamModule],
   providers: [MatchService, MatchRepository],
+  exports: [MatchService],
 })
 export class MatchModule {}

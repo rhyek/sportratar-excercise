@@ -28,4 +28,8 @@ export class MatchRepository {
     this.matches.push(match);
     return match;
   }
+
+  getOngoingMatches(): Match[] {
+    return this.matches.filter((match) => match.finishedAt === null);
+  }
 }
