@@ -1,0 +1,48 @@
+{
+  "eslint.enable": true,
+  "eslint.format.enable": true,
+  "eslint.useFlatConfig": true,
+  "editor.formatOnType": false, // required
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file", // required to format on save
+  "eslint.rules.customizations": [{ "rule": "prettier/*", "severity": "off" }],
+  // "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.associations": {
+    "**/*.html.template": "html",
+    "**/*.toml.template": "toml"
+  },
+  "search.exclude": {
+    "**/gen": true,
+    "**/playwright-report": true,
+    "packages/*/build": true,
+    "packages/*/dist": true,
+    "pnpm-lock.yaml": true
+  },
+  "typescript.preferences.importModuleSpecifier": "shortest",
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "react-day-picker",
+    "i18next"
+  ],
+  "typescript.preferences.preferTypeOnlyAutoImports": false,
+  "cssVariables.lookupFiles": [
+    "**/*.css",
+    "**/*.scss",
+    "**/*.sass",
+    "**/*.less",
+    "packages/clinica-app/node_modules/@mantine/core/styles.css"
+  ]
+}
