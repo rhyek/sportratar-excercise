@@ -11,14 +11,17 @@ export class CreateMatchService {
   ) {}
 
   create(homeTeamId: string, awayTeamId: string) {
-    if (
-      !this.teamRepository.findById(homeTeamId) ||
-      !this.teamRepository.findById(awayTeamId)
-    ) {
-      throw new Error('Team not found');
+    if (homeTeamId === awayTeamId) {
+      throw new Error('Home and away team cannot be the same');
+    }
+    const teamIds = [homeTeamId, awayTeamId];
+    for (const teamId of teamIds) {
+      if (!this.teamRepository.findById(teamId)) {
+        throw new Error(`Team [${teamId}] not found`);
+      }
     }
     CreateMatchService.checkTeamsInOngoingMatches(
-      [homeTeamId, awayTeamId],
+      teamIds,
       this.matchRepository.getOngoingMatches(),
     );
     return this.matchRepository.create({

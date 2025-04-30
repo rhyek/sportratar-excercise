@@ -24,14 +24,14 @@ describe('create match', () => {
   test('create with invalid team throws', async () => {
     const { app, createMatchService } = await setup();
     try {
-      expect(() => createMatchService.create('invalid', 'invalid')).toThrow(
-        'Team not found',
+      expect(() => createMatchService.create('invalid1', 'invalid2')).toThrow(
+        'Team [invalid1] not found',
       );
     } finally {
       await app.close();
     }
   });
-  test('create', async () => {
+  test('can create', async () => {
     const { app, createMatchService, teamService } = await setup();
     try {
       const teamHomeName = faker.word.noun();
@@ -49,6 +49,17 @@ describe('create match', () => {
         startedAt: expect.any(Date),
         finishedAt: null,
       });
+    } finally {
+      await app.close();
+    }
+  });
+  test('create with same team throws', async () => {
+    const { app, createMatchService, teamService } = await setup();
+    try {
+      const team = teamService.findOrCreate('team1');
+      expect(() => createMatchService.create(team.id, team.id)).toThrow(
+        'Home and away team cannot be the same',
+      );
     } finally {
       await app.close();
     }
