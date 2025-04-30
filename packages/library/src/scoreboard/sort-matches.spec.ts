@@ -51,6 +51,7 @@ describe('sort matches', () => {
         homeTeamScore: 6,
         awayTeamScore: 6,
         totalScore: 12,
+        startedAt: expect.any(Date),
       },
       {
         homeTeamId: 'spain',
@@ -58,6 +59,7 @@ describe('sort matches', () => {
         homeTeamScore: 10,
         awayTeamScore: 2,
         totalScore: 12,
+        startedAt: expect.any(Date),
       },
       {
         homeTeamId: 'mexico',
@@ -65,6 +67,7 @@ describe('sort matches', () => {
         homeTeamScore: 0,
         awayTeamScore: 5,
         totalScore: 5,
+        startedAt: expect.any(Date),
       },
       {
         homeTeamId: 'argentina',
@@ -72,6 +75,7 @@ describe('sort matches', () => {
         homeTeamScore: 3,
         awayTeamScore: 1,
         totalScore: 4,
+        startedAt: expect.any(Date),
       },
       {
         homeTeamId: 'germany',
@@ -79,9 +83,10 @@ describe('sort matches', () => {
         homeTeamScore: 2,
         awayTeamScore: 2,
         totalScore: 4,
+        startedAt: expect.any(Date),
       },
     ];
 
-    expect(sortedMatches).toMatchObject(expectedMatches);
+    expect(sortedMatches).toEqual(expectedMatches);
   });
 });
