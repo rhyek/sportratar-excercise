@@ -2,7 +2,7 @@
   "type": "module",
   "scripts": {
     "prepare": "husky",
-    "test": "cd packages/web-api && pnpm test"
+    "test": "cd packages/library && pnpm test"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.1",

@@ -48,7 +48,7 @@ importers:
         specifier: ^8.31.1
         version: 8.31.1(eslint@9.25.1)(typescript@5.8.3)
 
-  packages/web-api:
+  packages/library:
     dependencies:
       '@nestjs/common':
         specifier: ^11.0.1
