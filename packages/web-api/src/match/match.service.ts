@@ -13,12 +13,12 @@ export class MatchService {
     private readonly matchRepository: MatchRepository,
   ) {}
 
-  create(teamHomeId: string, teamAwayId: string) {
-    return this.createMatchService.create(teamHomeId, teamAwayId);
+  create(homeTeamId: string, awayTeamId: string) {
+    return this.createMatchService.create(homeTeamId, awayTeamId);
   }
 
-  updateScore(matchId: string, teamHomeScore: number, teamAwayScore: number) {
-    this.updateScoreService.update(matchId, teamHomeScore, teamAwayScore);
+  updateScore(matchId: string, homeTeamScore: number, awayTeamScore: number) {
+    this.updateScoreService.update(matchId, homeTeamScore, awayTeamScore);
   }
 
   end(matchId: string) {
