@@ -25,4 +25,30 @@ describe('team', () => {
       await app.close();
     }
   });
+  test('create team', async () => {
+    const { app, teamRepository } = await setup();
+    try {
+      const teamName = 'test1';
+      let team = teamRepository.findByName(teamName);
+      expect(team).toBeNull();
+      team = teamRepository.create(teamName);
+      expect(team).not.toBeNull();
+      expect(team).toMatchObject({
+        id: expect.any(String),
+        name: teamName,
+      });
+    } finally {
+      await app.close();
+    }
+  });
+  test('create team with same name throws', async () => {
+    const { app, teamRepository } = await setup();
+    try {
+      const teamName = 'test1';
+      teamRepository.create(teamName);
+      expect(() => teamRepository.create(teamName)).toThrow();
+    } finally {
+      await app.close();
+    }
+  });
 });
