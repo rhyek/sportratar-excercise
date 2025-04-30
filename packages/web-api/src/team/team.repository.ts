@@ -23,4 +23,12 @@ export class TeamRepository {
   findByName(name: string): Team | null {
     return this.teamNameIndex.get(name) ?? null;
   }
+
+  findOrCreate(name: string): Team {
+    const team = this.findByName(name);
+    if (team) {
+      return team;
+    }
+    return this.create(name);
+  }
 }

@@ -51,4 +51,24 @@ describe('team', () => {
       await app.close();
     }
   });
+  test('findOrCreate', async () => {
+    const { app, teamRepository } = await setup();
+    try {
+      const teamName = 'test1';
+      let team = teamRepository.findOrCreate(teamName);
+      expect(team).not.toBeNull();
+      expect(team).toMatchObject({
+        id: expect.any(String),
+        name: teamName,
+      });
+      team = teamRepository.findOrCreate(teamName);
+      expect(team).not.toBeNull();
+      expect(team).toMatchObject({
+        id: expect.any(String),
+        name: teamName,
+      });
+    } finally {
+      await app.close();
+    }
+  });
 });
