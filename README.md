@@ -10,7 +10,7 @@ If interested, my [nestjs-endpoints](https://github.com/rhyek/nestjs-endpoints) 
 
 ## Error handling
 
-The library exposes e `LibrayError` that consumers can match for in `try/catch` to handle expected errors.
+The library exposes the `LibrayError` error class that consumers can match for in `try/catch` to handle expected errors.
 
 # Setup
 
